@@ -22,8 +22,8 @@ function makePac() {
   newimg.width = 100;
 
   // TODO: set position here
-  newimg.style.left = position.x + 'px';
-  newimg.style.top = position.y + 'px';
+newimg.style.left = position.x + 'px';
+newimg.style.top = position.y + 'px';
 
   // TODO add new Child image to game
   game.appendChild(newimg);
@@ -42,37 +42,15 @@ function update() {
     item.position.x += item.velocity.x;
     item.position.y += item.velocity.y;
 
-    item.newimg.style.left = item.position.x + 'px';
-    item.newimg.style.top = item.position.y + 'px';
+    item.newimg.style.left = item.position.x;
+    item.newimg.style.top = item.position.y;
   });
   setTimeout(update, 20);
 }
 
 function checkCollisions(item) {
   // TODO: detect collision with all walls and make pacman bounce
-  // Detect collision with all walls and make pacman bounce
-  // Right wall
-  if (item.position.x + item.newimg.width >= window.innerWidth) {
-    item.velocity.x = -Math.abs(item.velocity.x);
-  }
-  // Left wall
-  if (item.position.x <= 0) {
-    item.velocity.x = Math.abs(item.velocity.x);
-  }
-  // Bottom wall
-  if (item.position.y + item.newimg.height >= window.innerHeight) {
-    item.velocity.y = -Math.abs(item.velocity.y);
-  }
-  // Top wall
-  if (item.position.y <= 0) {
-    item.velocity.y = Math.abs(item.velocity.y);
-  }
-}
-
-  window.onload = function() {
-  document.getElementById('addPacMan').onclick = makeOne;
-  document.getElementById('startGame').onclick = update;
-};
+  
 }
 
 function makeOne() {
