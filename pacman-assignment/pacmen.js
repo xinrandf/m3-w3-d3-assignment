@@ -50,8 +50,29 @@ function update() {
 
 function checkCollisions(item) {
   // TODO: detect collision with all walls and make pacman bounce
-  
+  // Detect collision with all walls and make pacman bounce
+  // Right wall
+  if (item.position.x + item.newimg.width >= window.innerWidth) {
+    item.velocity.x = -Math.abs(item.velocity.x);
+  }
+  // Left wall
+  if (item.position.x <= 0) {
+    item.velocity.x = Math.abs(item.velocity.x);
+  }
+  // Bottom wall
+  if (item.position.y + item.newimg.height >= window.innerHeight) {
+    item.velocity.y = -Math.abs(item.velocity.y);
+  }
+  // Top wall
+  if (item.position.y <= 0) {
+    item.velocity.y = Math.abs(item.velocity.y);
+  }
 }
+
+  window.onload = function() {
+  document.getElementById('addPacMan').onclick = makeOne;
+  document.getElementById('startGame').onclick = update;
+};
 
 function makeOne() {
   pacMen.push(makePac()); // add a new PacMan
